@@ -19,6 +19,8 @@ def index(request):
         return redirect('/')
 
     context = {'tasks': tasks, 'form': form}
+    # for task in tasks:
+    #     print(task.get_importance_render())
     return render(request, 'tasks/list.html', context)
 
 
@@ -40,6 +42,10 @@ def updateTask(request, pk):
 
 def deleteTask(request, pk):
     item = Task.objects.get(id=pk)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect('/')
 
     context = {'item': item}
     return render(request, 'tasks/delete.html', context)

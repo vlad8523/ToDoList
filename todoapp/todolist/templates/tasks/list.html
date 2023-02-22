@@ -1,17 +1,30 @@
-<h3>To Do</h3>
+<!-- <style>
+    body{
+        background-color:blue;
+    }
+</style> -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css'%}"/>
 
 <form method="POST" action="/">
     {% csrf_token %}
     {{ form.title }}
+    {{ form.importance}}
     <input type="submit" name="Create Task">
 </form>
 
 {% for task in tasks %}
-    <div>
+    <div class='item_row'>
         <p>
+            {% if task.complete == True %}
+            <strike>{{task}}</strike>
+            {% else %}
+            <span>{{task}}</span>
+            {% endif %}
+        
+            {{task.get_importance_display}}
             <a href="{% url 'update_task' task.id%}">Update</a>
             <a href="{% url 'delete' task.id%}">Delete</a>
-            {{task}}
         </p>
     </div> 
-{% endfor %}
+{% endfor %}    
