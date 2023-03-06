@@ -4,15 +4,15 @@
 <div class="center">
     <div class="item_row">
         <p>Are you sure you want to delete "{{ item }}"?</p>
-
-        
         <div class="upd">
             <form method="POST">
                 {% csrf_token %}
                 <input type="submit" title="Delete" class="btn_del btn">
             </form>
-            <a href="{% url 'list' %}" class="l_upd l_btn l_canc btn">Cancel</a>
-            
+            <form action="{% url 'list' %}">
+{#                <a class="l_upd l_btn l_canc btn">Cancel</a>#}
+                <input type="submit" title="Cancel" value="Cancel" class="btn">
+            </form>
         </div>
     </div>
 </div>
