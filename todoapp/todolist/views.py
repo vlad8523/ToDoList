@@ -10,10 +10,10 @@ from .forms import *
 def index(request):
     tasks = Task.objects.all()
 
-    form = TaskForm()
+    form = addTaskForm()
 
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = addTaskForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect('/')
@@ -21,7 +21,7 @@ def index(request):
     context = {'tasks': tasks, 'form': form}
     # for task in tasks:
     #     print(task.get_importance_render())
-    return render(request, 'tasks/list.html', context)
+    return render(request, 'tasks/index.html', context)
 
 
 def updateTask(request, pk):
