@@ -13,9 +13,8 @@ class addTaskForm(forms.ModelForm):
         model = Task
         fields = ['title', 'description', 'importance']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-input'}),
-            'description': forms.Textarea(attrs={'width': "100%",
-                                                 'resize': 'none'})
+            'title': forms.TextInput(attrs={'class': 'form-title'}),
+            'description': forms.Textarea(attrs={'class': 'form-desc'})
         }
 
 
@@ -23,3 +22,7 @@ class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = '__all__'
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-title'}),
+            'description': forms.Textarea(attrs={'class': 'form-desc'})
+        }

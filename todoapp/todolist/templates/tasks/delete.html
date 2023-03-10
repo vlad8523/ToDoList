@@ -1,18 +1,21 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-<link rel="stylesheet" href="{% static 'css/style.css'%}"/>
-<div class="center">
-    <div class="item_row">
-        <p>Are you sure you want to delete "{{ item }}"?</p>
-        <div class="upd">
-            <form method="POST">
-                {% csrf_token %}
-                <input type="submit" title="Delete" class="btn_del btn">
-            </form>
-            <form action="{% url 'list' %}">
-{#                <a class="l_upd l_btn l_canc btn">Cancel</a>#}
-                <input type="submit" title="Cancel" value="Cancel" class="btn">
-            </form>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"/>
+</head>
+<body>
+    <div class="center">
+        <div class="item_row">
+            <p>Are you sure you want to delete "{{ item }}"?</p>
+            <div class="upd">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" title="Delete" value="Delete" class="btn_dng btn">
+                </form>
+                <form action="{% url 'list' %}">
+                    <input type="submit" title="Cancel" value="Cancel" class="btn btn_sub">
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>

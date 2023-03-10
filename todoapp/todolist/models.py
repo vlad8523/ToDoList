@@ -13,7 +13,7 @@ class Importance(models.Model):
 
 class Task(models.Model):
     title = models.CharField(max_length=30)
-    description = models.TextField(max_length=100, blank=True)
+    description = models.TextField(max_length=200, blank=True)
     complete = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
     importance = models.ForeignKey(Importance, on_delete=models.PROTECT)

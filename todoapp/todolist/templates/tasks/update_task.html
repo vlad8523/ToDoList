@@ -1,7 +1,15 @@
-<h3>Update Task</h3>
-
-<form method="POST">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" name="Update Task">
-</form>
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}"/>
+    <title>Update task form.title</title>
+</head>
+<body>
+    <div class="task_form">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" name="Update Task" title="Update" value="Update" class="btn_sub btn">
+        </form>
+    </div>
+</body>

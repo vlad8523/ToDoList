@@ -8,7 +8,7 @@ from .forms import *
 # Create your views here.
 
 def index(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.values('id', 'title', 'description', 'complete', 'importance__title', 'importance__color')
 
     form = addTaskForm()
 
