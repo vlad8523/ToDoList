@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-&(=$ladablg=m(_f0!o!(0v1fbs@7vfblaf=ms5s-a=n=417m7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+DEPLOY = False
 
 
 ALLOWED_HOSTS = []
@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'todolist',
-    'debug_toolbar'
 ]
 
 MIDDLEWARE = [
@@ -50,8 +49,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
+
+if not DEPLOY:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 ROOT_URLCONF = 'todoproject.urls'
 
@@ -114,6 +116,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+if DEPLOY:
+    STATIC_ROOT = '/home/vladushek123/ToDoList/todoapp/static/'
 
 STATIC_URL = '/static/'
 
